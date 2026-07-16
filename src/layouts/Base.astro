@@ -1,0 +1,56 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+}
+const { title, description } = Astro.props;
+const path = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0B0D12" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site">
+      <div class="wrap">
+        <a class="brand" href="/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          Notare
+        </a>
+        <nav class="main" aria-label="Main">
+          <a href="/plus" class={path.startsWith("/plus") ? "active" : ""}>Notare+</a>
+          <a href="https://github.com/abhi-wan-kenobi/notare">GitHub</a>
+          <a class="btn btn-primary" href="https://github.com/abhi-wan-kenobi/notare/releases">Download</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site">
+      <div class="wrap">
+        <span>© 2026 Notare · MIT licensed, source and all.</span>
+        <nav aria-label="Footer">
+          <a href="https://github.com/abhi-wan-kenobi/notare">GitHub</a>
+          <a href="https://github.com/abhi-wan-kenobi/notare/blob/main/LICENSE.md">MIT License</a>
+          <a href="/plus">Notare+</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

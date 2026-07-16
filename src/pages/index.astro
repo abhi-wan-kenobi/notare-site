@@ -1,0 +1,169 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+  title="Notare — local-first meeting notes and dictation"
+  description="Your meetings, transcribed and enhanced — locally. Saved as plain Markdown you own. Open source, zero telemetry, no accounts."
+>
+  <!-- ============ hero ============ -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="orb" aria-hidden="true"></div>
+      <h1>
+        Your meetings, transcribed and enhanced — <span class="accent">locally</span>.
+      </h1>
+      <p class="sub">
+        Saved as plain Markdown you own. Notare records your meetings without
+        bots, transcribes them on your GPU, and sharpens <em>your</em> notes
+        with the transcript as context. Open source. No cloud. No account.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://github.com/abhi-wan-kenobi/notare/releases">
+          Download for macOS · Windows · Linux
+        </a>
+        <a class="btn" href="https://github.com/abhi-wan-kenobi/notare">View source on GitHub</a>
+      </div>
+      <p class="meta-line">
+        <span><span class="dot-ok" aria-hidden="true"></span> MIT licensed</span>
+        <span><span class="dot-ok" aria-hidden="true"></span> Zero telemetry — compiled out</span>
+        <span><span class="dot-ok" aria-hidden="true"></span> No accounts, ever</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ features ============ -->
+  <section class="band" id="features">
+    <div class="wrap">
+      <p class="kicker">How it works</p>
+      <h2 class="section-title">A precision instrument, not another AI subscription.</h2>
+      <p class="section-lede">
+        No meeting bots joining your calls. No audio leaving your machine.
+        Notare listens where you are, and everything it produces is a file on
+        your disk.
+      </p>
+
+      <div class="feature-list">
+        <div class="feature-row">
+          <div>
+            <h3><span class="idx">01</span> Local transcription, on your GPU</h3>
+            <p>
+              Whisper runs on-device with GPU acceleration — Metal, CUDA, or
+              Vulkan. Every model is checksum-verified before it ever loads.
+              Your audio never crosses the network; there is no server to
+              trust because there is no server.
+            </p>
+          </div>
+          <div class="vignette" role="img" aria-label="Live transcript mock: recording indicator, timer, and streaming speaker lines">
+            <div class="vhead">
+              <span class="rec-dot" aria-hidden="true"></span>
+              <span class="timer">00:24:<b>17</b></span>
+              <span>Weekly product sync</span>
+            </div>
+            <div class="tline">
+              <span class="tstamp">24:02</span>
+              <span class="said">…so the migration lands behind the flag first, then we watch the error budget for a week.</span>
+            </div>
+            <div class="tline live">
+              <span class="tstamp">24:15</span>
+              <span class="said">Agreed — and the rollback path is just flipping the flag back</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-row">
+          <div>
+            <h3><span class="idx">02</span> Notepad-first enhancement</h3>
+            <p>
+              You take rough notes during the meeting, like you always have.
+              Afterwards, Notare enhances <em>your</em> notes — filling gaps,
+              fixing names, attaching decisions — using the transcript as
+              context. It sharpens what you wrote; it doesn't replace you with
+              a summary bot.
+            </p>
+          </div>
+          <div class="vignette" role="img" aria-label="Notes mock: a rough note enhanced with detail from the transcript">
+            <div class="vhead"><span>notes · enhanced</span></div>
+            <div class="mdblock"><span class="h">## Decisions</span>
+- migration behind flag<div class="enh">- Migration ships behind <code>orders_v2</code> flag;
+  1-week error-budget watch. Rollback =
+  flag off. Owner: Priya, by Fri.</div></div>
+          </div>
+        </div>
+
+        <div class="feature-row">
+          <div>
+            <h3><span class="idx">03</span> Plain Markdown, straight into your vault</h3>
+            <p>
+              Every note and transcript is a plain <code>.md</code> file saved
+              to any folder you choose — including your Obsidian vault. No
+              proprietary database, no export button, no lock-in. If Notare
+              disappeared tomorrow, your notes wouldn't notice.
+            </p>
+          </div>
+          <div class="vignette" role="img" aria-label="Markdown file mock showing frontmatter and wikilinks">
+            <div class="vhead"><span>~/vault/Meetings/2026-07-16-Product-Sync.md</span></div>
+            <div class="mdblock">---
+date: 2026-07-16
+attendees: [Priya, Sam, me]
+---
+<span class="h"># Product Sync</span>
+Linked: <span class="link">[[Orders-V2-Migration]]</span></div>
+          </div>
+        </div>
+
+        <div class="feature-row">
+          <div>
+            <h3><span class="idx">04</span> Bring your own everything</h3>
+            <p>
+              Enhancement runs on the LLM you point it at — Ollama on your own
+              hardware, or any OpenAI-compatible endpoint with your own key.
+              Calendar sync uses <em>your</em> Google OAuth credentials,
+              straight from your machine to Google. No middleman, no metering,
+              no one in between.
+            </p>
+          </div>
+          <div class="vignette" role="img" aria-label="Settings mock: local Whisper model verified, Ollama endpoint connected, calendar via own OAuth">
+            <dl class="kv">
+              <dt>STT</dt><dd>whisper-small-q8 · local <span class="ok">✓ verified</span></dd>
+              <dt>LLM</dt><dd>ollama · http://localhost:11434 <span class="ok">✓</span></dd>
+              <dt>Calendar</dt><dd>Google · your OAuth client <span class="ok">✓</span></dd>
+              <dt>Telemetry</dt><dd>not compiled in</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ covenant ============ -->
+  <section class="band" id="covenant">
+    <div class="wrap">
+      <p class="kicker">The covenant</p>
+      <h2 class="section-title">Free means free. In writing.</h2>
+      <div class="covenant">
+        <blockquote>
+          Everything that works locally is <strong>free. Forever.</strong>
+          No feature you have today will ever move behind a paywall.
+          Notare+ will sell convenience — hosted sync and models —
+          <strong>never capability.</strong>
+        </blockquote>
+        <p class="signed">
+          — The Notare covenant. It's in the repo, under version control,
+          like everything else. <a href="/plus">See exactly what Notare+ will charge for →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ closing cta ============ -->
+  <section class="band">
+    <div class="wrap waitlist" style="padding-top: 24px; padding-bottom: 24px;">
+      <h2 class="section-title" style="max-width: none;">Own your meeting notes again.</h2>
+      <div class="cta-row" style="margin-top: 30px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+        <a class="btn btn-primary" href="https://github.com/abhi-wan-kenobi/notare/releases">Download Notare</a>
+        <a class="btn" href="https://github.com/abhi-wan-kenobi/notare">Star on GitHub</a>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,164 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+  title="Notare+ — convenience, never capability"
+  description="What Notare+ will charge for (hosted sync, hosted models), what it never will (anything local), and pricing published before launch. Join the waitlist."
+>
+  <!-- ============ head ============ -->
+  <section class="page-head">
+    <div class="wrap">
+      <p class="kicker">The paid tier, before it exists</p>
+      <h1>Notare<span class="plus">+</span> sells convenience.<br />Never capability.</h1>
+      <p>
+        Most apps announce pricing after you're invested. We're publishing the
+        exact boundary between free and paid before Notare+ is even built — so
+        you can adopt Notare knowing precisely what the deal is.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ what will be paid ============ -->
+  <section class="band">
+    <div class="wrap">
+      <p class="kicker">On the meter</p>
+      <h2 class="section-title">What Notare+ will charge for</h2>
+      <p class="section-lede">
+        Exactly one category: things that require us to run servers for you.
+        Every one of these has a free local equivalent that keeps working
+        whether or not you pay.
+      </p>
+
+      <div class="ledger">
+        <div class="ledger-row">
+          <div>
+            <h3>E2E-encrypted cloud sync</h3>
+            <span class="tag paid">Paid</span>
+          </div>
+          <p>
+            Your Markdown, synced between machines through our relay —
+            end-to-end encrypted, so we can't read a word of it. The free
+            equivalent: your notes are plain files, sync them with anything
+            (Obsidian Sync, Syncthing, git, iCloud).
+          </p>
+        </div>
+        <div class="ledger-row">
+          <div>
+            <h3>Hosted transcription</h3>
+            <span class="tag paid">Paid</span>
+          </div>
+          <p>
+            Server-side STT for when you're on a machine without a GPU, or
+            want larger models than your hardware runs comfortably. Local
+            Whisper stays free and first-class — hosted is a fallback, not
+            the default.
+          </p>
+        </div>
+        <div class="ledger-row">
+          <div>
+            <h3>Hosted LLM summaries</h3>
+            <span class="tag paid">Paid</span>
+          </div>
+          <p>
+            Enhancement on our hosted models, for people who don't want to run
+            Ollama or manage API keys. BYO endpoint remains free forever — if
+            you have a key or a local model, you never need this.
+          </p>
+        </div>
+        <div class="ledger-row">
+          <div>
+            <h3>Roaming voice profiles</h3>
+            <span class="tag paid">Paid</span>
+          </div>
+          <p>
+            Speaker-recognition profiles that follow you across devices, so
+            "who said what" is solved on every machine without retraining.
+            Per-device profiles stay local and free.
+          </p>
+        </div>
+      </div>
+
+      <div class="pricing-creed">
+        <p class="kicker" style="margin-bottom: 12px;">Pricing philosophy</p>
+        <p class="big">
+          Metered at cost plus a thin margin, with published rates, hard caps,
+          and prepaid credits — no surprise bills.
+        </p>
+        <ul>
+          <li>Usage-based, not seat-based: pay for the minutes and tokens you actually use.</li>
+          <li>Rates published on this page before launch, and every change announced before it applies.</li>
+          <li>Hard caps you set yourself — when credits run out, hosted features pause. Nothing auto-tops-up.</li>
+          <li>Prepaid credits, not a subscription treadmill. Unused credits don't expire out from under you.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ what will never be paid ============ -->
+  <section class="band">
+    <div class="wrap">
+      <p class="kicker">Never on the meter</p>
+      <h2 class="section-title">What will never cost a rupee, dollar, or euro</h2>
+
+      <div class="ledger">
+        <div class="ledger-row">
+          <div>
+            <h3>Everything local</h3>
+            <span class="tag free">Free forever</span>
+          </div>
+          <p>
+            Recording, local Whisper transcription with GPU acceleration,
+            notepad-first AI enhancement via your own LLM, Markdown export to
+            any folder, Obsidian vault integration, calendar via your own
+            OAuth — the entire app as it exists today, and every local feature
+            we ship after this.
+          </p>
+        </div>
+      </div>
+
+      <div class="covenant">
+        <blockquote>
+          Everything that works locally is <strong>free. Forever.</strong>
+          No feature you have today will ever move behind a paywall.
+          Notare+ will sell convenience — hosted sync and models —
+          <strong>never capability.</strong>
+        </blockquote>
+        <p class="signed">
+          — The covenant, verbatim from the homepage. If we ever violate it,
+          the code is MIT — fork us and keep everything.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ waitlist ============ -->
+  <section class="band waitlist" id="waitlist">
+    <div class="wrap">
+      <p class="kicker">Waitlist</p>
+      <h2 class="section-title" style="max-width: none;">Be first when Notare+ opens.</h2>
+      <p class="section-lede" style="margin-left: auto; margin-right: auto;">
+        One email when it launches, one when pricing is published. Nothing else.
+      </p>
+      <!-- TODO: waitlist.notare.io/subscribe is a placeholder endpoint — wire a
+           real handler (Cloudflare Worker + KV, or Buttondown) before launch. -->
+      <form method="POST" action="https://waitlist.notare.io/subscribe">
+        <label class="sr-only" for="email" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Email address</label>
+        <input
+          id="email"
+          type="email"
+          name="email"
+          required
+          placeholder="you@example.com"
+          autocomplete="email"
+        />
+        <button class="btn btn-primary" type="submit">Join the waitlist</button>
+      </form>
+      <p class="fallback">
+        Form not working? Email
+        <a href="mailto:plus@notare.io?subject=Notare%2B%20waitlist">plus@notare.io</a>
+        with the subject "Notare+ waitlist".
+      </p>
+    </div>
+  </section>
+</Base>
