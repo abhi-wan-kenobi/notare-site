@@ -27,6 +27,7 @@
 html {
   color-scheme: dark;
   scroll-behavior: smooth;
+  scroll-padding-top: 72px;
 }
 
 body {
@@ -523,6 +524,10 @@ p.section-lede {
     grid-template-columns: 1fr;
     gap: 14px;
   }
+}
+.dl-actions {
+  display: block;
+  margin-top: 18px;
 }
 
 .pricing-creed {

@@ -19,8 +19,8 @@ import Base from "../layouts/Base.astro";
         with the transcript as context. Open source. No cloud. No account.
       </p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="https://github.com/abhi-wan-kenobi/notare/releases">
-          Download for macOS · Windows · Linux
+        <a class="btn btn-primary" href="#download">
+          Download for Windows · Linux
         </a>
         <a class="btn" href="https://github.com/abhi-wan-kenobi/notare">View source on GitHub</a>
       </div>
@@ -156,12 +156,72 @@ Linked: <span class="link">[[Orders-V2-Migration]]</span></div>
     </div>
   </section>
 
+  <!-- ============ download ============ -->
+  <section class="band" id="download">
+    <div class="wrap">
+      <p class="kicker">Download</p>
+      <h2 class="section-title">Get Notare</h2>
+      <p class="section-lede">
+        Every link below always serves the newest release — no version numbers
+        to chase. Grab it once; updates land in the same place.
+      </p>
+
+      <div class="ledger">
+        <div class="ledger-row">
+          <div>
+            <h3>Windows</h3>
+            <span class="tag">.msi installer</span>
+          </div>
+          <p>
+            Standard MSI installer for Windows 10/11.
+            <br /><br />
+            Note: the installer isn't code-signed yet, so SmartScreen will show
+            an "unrecognized app" warning — click <em>More info → Run anyway</em>.
+            The build is reproducible from the MIT source if you'd rather verify
+            than trust.
+            <span class="dl-actions">
+              <a class="btn btn-primary" href="https://github.com/abhi-wan-kenobi/notare/releases/latest">Download .msi — latest release</a>
+            </span>
+          </p>
+        </div>
+        <div class="ledger-row">
+          <div>
+            <h3>Linux</h3>
+            <span class="tag">.AppImage / .deb</span>
+          </div>
+          <p>
+            Portable AppImage (any distro — <code>chmod +x</code> and run) or a
+            .deb package for Debian and Ubuntu. Local Whisper transcription with
+            Vulkan and CUDA acceleration works out of the box.
+            <span class="dl-actions">
+              <a class="btn btn-primary" href="https://github.com/abhi-wan-kenobi/notare/releases/latest">Download .AppImage / .deb — latest release</a>
+            </span>
+          </p>
+        </div>
+        <div class="ledger-row">
+          <div>
+            <h3>macOS</h3>
+            <span class="tag">build from source</span>
+          </div>
+          <p>
+            Prebuilt macOS binaries aren't published yet — they're coming. Until
+            then, Notare builds cleanly from source on Apple Silicon and Intel
+            Macs (Metal-accelerated Whisper included).
+            <span class="dl-actions">
+              <a class="btn" href="https://github.com/abhi-wan-kenobi/notare/blob/main/docs/BUILDING.md">Build instructions — docs/BUILDING.md</a>
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ closing cta ============ -->
   <section class="band">
     <div class="wrap waitlist" style="padding-top: 24px; padding-bottom: 24px;">
       <h2 class="section-title" style="max-width: none;">Own your meeting notes again.</h2>
       <div class="cta-row" style="margin-top: 30px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
-        <a class="btn btn-primary" href="https://github.com/abhi-wan-kenobi/notare/releases">Download Notare</a>
+        <a class="btn btn-primary" href="https://github.com/abhi-wan-kenobi/notare/releases/latest">Download Notare</a>
         <a class="btn" href="https://github.com/abhi-wan-kenobi/notare">Star on GitHub</a>
       </div>
     </div>

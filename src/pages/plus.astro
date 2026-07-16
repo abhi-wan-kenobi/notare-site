@@ -140,9 +140,9 @@ import Base from "../layouts/Base.astro";
       <p class="section-lede" style="margin-left: auto; margin-right: auto;">
         One email when it launches, one when pricing is published. Nothing else.
       </p>
-      <!-- TODO: waitlist.notare.io/subscribe is a placeholder endpoint — wire a
+      <!-- TODO: waitlist.notare.dev/subscribe is a placeholder endpoint — wire a
            real handler (Cloudflare Worker + KV, or Buttondown) before launch. -->
-      <form method="POST" action="https://waitlist.notare.io/subscribe">
+      <form method="POST" action="https://waitlist.notare.dev/subscribe">
         <label class="sr-only" for="email" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Email address</label>
         <input
           id="email"
@@ -156,7 +156,7 @@ import Base from "../layouts/Base.astro";
       </form>
       <p class="fallback">
         Form not working? Email
-        <a href="mailto:plus@notare.io?subject=Notare%2B%20waitlist">plus@notare.io</a>
+        <a href="mailto:plus@notare.dev?subject=Notare%2B%20waitlist">plus@notare.dev</a>
         with the subject "Notare+ waitlist".
       </p>
     </div>

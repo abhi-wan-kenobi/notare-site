@@ -7,6 +7,8 @@ interface Props {
 }
 const { title, description } = Astro.props;
 const path = Astro.url.pathname;
+const canonical = new URL(path, Astro.site);
+const ogImage = new URL("/og.png", Astro.site);
 ---
 
 <!doctype html>
@@ -17,9 +19,20 @@ const path = Astro.url.pathname;
     <meta name="description" content={description} />
     <meta name="color-scheme" content="dark" />
     <meta name="theme-color" content="#0B0D12" />
+    <link rel="canonical" href={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Notare" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Notare — your meetings, transcribed and enhanced, locally." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
@@ -33,7 +46,7 @@ const path = Astro.url.pathname;
         <nav class="main" aria-label="Main">
           <a href="/plus" class={path.startsWith("/plus") ? "active" : ""}>Notare+</a>
           <a href="https://github.com/abhi-wan-kenobi/notare">GitHub</a>
-          <a class="btn btn-primary" href="https://github.com/abhi-wan-kenobi/notare/releases">Download</a>
+          <a class="btn btn-primary" href="/#download">Download</a>
         </nav>
       </div>
     </header>
@@ -46,6 +59,7 @@ const path = Astro.url.pathname;
       <div class="wrap">
         <span>© 2026 Notare · MIT licensed, source and all.</span>
         <nav aria-label="Footer">
+          <a href="https://abhishek.be">Built by Abhishek Gupta</a>
           <a href="https://github.com/abhi-wan-kenobi/notare">GitHub</a>
           <a href="https://github.com/abhi-wan-kenobi/notare/blob/main/LICENSE.md">MIT License</a>
           <a href="/plus">Notare+</a>
