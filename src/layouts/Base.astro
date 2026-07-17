@@ -45,6 +45,9 @@ const ogImage = new URL("/og.png", Astro.site);
         </a>
         <nav class="main" aria-label="Main">
           <a href="/plus" class={path.startsWith("/plus") ? "active" : ""}>Notare+</a>
+          {/* TODO: swap to the GitHub Projects board URL once it exists
+              (github.com/users/abhi-wan-kenobi/projects/<n>). */}
+          <a href="https://github.com/abhi-wan-kenobi/notare/issues">Roadmap</a>
           <a href="https://github.com/abhi-wan-kenobi/notare">GitHub</a>
           <a class="btn btn-primary" href="/#download">Download</a>
         </nav>
@@ -61,6 +64,8 @@ const ogImage = new URL("/og.png", Astro.site);
         <nav aria-label="Footer">
           <a href="https://abhishek.be">Built by Abhishek Gupta</a>
           <a href="https://github.com/abhi-wan-kenobi/notare">GitHub</a>
+          {/* TODO: swap to the GitHub Projects board URL once it exists. */}
+          <a href="https://github.com/abhi-wan-kenobi/notare/issues">Roadmap</a>
           <a href="https://github.com/abhi-wan-kenobi/notare/blob/main/LICENSE.md">MIT License</a>
           <a href="/plus">Notare+</a>
         </nav>

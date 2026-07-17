@@ -140,9 +140,10 @@ import Base from "../layouts/Base.astro";
       <p class="section-lede" style="margin-left: auto; margin-right: auto;">
         One email when it launches, one when pricing is published. Nothing else.
       </p>
-      <!-- TODO: waitlist.notare.dev/subscribe is a placeholder endpoint — wire a
-           real handler (Cloudflare Worker + KV, or Buttondown) before launch. -->
-      <form method="POST" action="https://waitlist.notare.dev/subscribe">
+      <!-- Same-origin Pages Function (functions/api/waitlist.ts) backed by KV.
+           JS path posts JSON; without JS the native form-encoded POST works
+           too (the function 303s back here with ?waitlist=ok|already|invalid). -->
+      <form id="waitlist-form" method="POST" action="/api/waitlist">
         <label class="sr-only" for="email" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Email address</label>
         <input
           id="email"
@@ -152,8 +153,21 @@ import Base from "../layouts/Base.astro";
           placeholder="you@example.com"
           autocomplete="email"
         />
+        <!-- Honeypot: humans never see or fill this; bots do. -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="website">Leave this field empty</label>
+          <input
+            id="website"
+            type="text"
+            name="website"
+            tabindex="-1"
+            autocomplete="off"
+          />
+        </div>
+        <input type="hidden" name="source" value="plus-page" />
         <button class="btn btn-primary" type="submit">Join the waitlist</button>
       </form>
+      <p class="form-status" id="waitlist-status" role="status" aria-live="polite" hidden></p>
       <p class="fallback">
         Form not working? Email
         <a href="mailto:plus@notare.dev?subject=Notare%2B%20waitlist">plus@notare.dev</a>
@@ -161,4 +175,59 @@ import Base from "../layouts/Base.astro";
       </p>
     </div>
   </section>
+
+  <script>
+    const form = document.getElementById("waitlist-form") as HTMLFormElement;
+    const status = document.getElementById("waitlist-status") as HTMLElement;
+
+    const MESSAGES: Record<string, [string, string]> = {
+      ok: ["You're on the list. One email at launch, one when pricing is published.", "ok"],
+      already: ["You're already on the list — nothing more to do.", "ok"],
+      invalid: ["That doesn't look like an email address — check it and try again.", "err"],
+      error: [
+        "Something went wrong on our end. Try again in a minute, or email plus@notare.dev.",
+        "err",
+      ],
+    };
+
+    function show(kind: string) {
+      const [text, tone] = MESSAGES[kind] ?? MESSAGES.error;
+      status.textContent = text;
+      status.classList.toggle("err", tone === "err");
+      status.hidden = false;
+      if (tone === "ok") form.hidden = true;
+    }
+
+    // No-JS submissions come back as /plus?waitlist=<flag>#waitlist.
+    const flag = new URLSearchParams(location.search).get("waitlist");
+    if (flag) show(flag);
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const button = form.querySelector("button")!;
+      button.disabled = true;
+      button.textContent = "Joining…";
+      try {
+        const res = await fetch("/api/waitlist", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            email: data.get("email"),
+            source: data.get("source"),
+            website: data.get("website"), // honeypot travels along
+          }),
+        });
+        const body = (await res.json()) as { success?: boolean; already?: boolean; error?: string };
+        if (body.success) show(body.already ? "already" : "ok");
+        else if (body.error === "invalid_email" || res.status === 400) show("invalid");
+        else show("error");
+      } catch {
+        show("error");
+      } finally {
+        button.disabled = false;
+        button.textContent = "Join the waitlist";
+      }
+    });
+  </script>
 </Base>

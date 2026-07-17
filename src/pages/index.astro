@@ -1,5 +1,11 @@
 ---
 import Base from "../layouts/Base.astro";
+
+// FLIP SWITCH: set to true when v0.2.0 ships with macOS assets
+// (Apple Silicon .dmg attached to the GitHub release). Everything else —
+// the .dmg download row with the Gatekeeper note — is already wired below
+// and replaces the "build from source" row automatically.
+const MACOS_RELEASED = false;
 ---
 
 <Base
@@ -198,20 +204,49 @@ Linked: <span class="link">[[Orders-V2-Migration]]</span></div>
             </span>
           </p>
         </div>
-        <div class="ledger-row">
-          <div>
-            <h3>macOS</h3>
-            <span class="tag">build from source</span>
-          </div>
-          <p>
-            Prebuilt macOS binaries aren't published yet — they're coming. Until
-            then, Notare builds cleanly from source on Apple Silicon and Intel
-            Macs (Metal-accelerated Whisper included).
-            <span class="dl-actions">
-              <a class="btn" href="https://github.com/abhi-wan-kenobi/notare/blob/main/docs/BUILDING.md">Build instructions — docs/BUILDING.md</a>
-            </span>
-          </p>
-        </div>
+        {
+          MACOS_RELEASED ? (
+            <div class="ledger-row">
+              <div>
+                <h3>macOS</h3>
+                <span class="tag">.dmg · Apple Silicon</span>
+              </div>
+              <p>
+                Disk image for Apple Silicon Macs (M1 and later), with
+                Metal-accelerated Whisper out of the box.
+                <br />
+                <br />
+                Note: the app isn't notarized yet, so Gatekeeper will refuse a
+                normal double-click the first time — <em>right-click the app →
+                Open → Open</em> once, and it launches normally after that. The
+                build is reproducible from the MIT source if you'd rather
+                verify than trust.
+                <span class="dl-actions">
+                  <a class="btn btn-primary" href="https://github.com/abhi-wan-kenobi/notare/releases/latest">
+                    Download .dmg — latest release
+                  </a>
+                </span>
+              </p>
+            </div>
+          ) : (
+            <div class="ledger-row">
+              <div>
+                <h3>macOS</h3>
+                <span class="tag">build from source</span>
+              </div>
+              <p>
+                Prebuilt macOS binaries aren't published yet — they're coming.
+                Until then, Notare builds cleanly from source on Apple Silicon
+                and Intel Macs (Metal-accelerated Whisper included).
+                <span class="dl-actions">
+                  <a class="btn" href="https://github.com/abhi-wan-kenobi/notare/blob/main/docs/BUILDING.md">
+                    Build instructions — docs/BUILDING.md
+                  </a>
+                </span>
+              </p>
+            </div>
+          )
+        }
       </div>
     </div>
   </section>
