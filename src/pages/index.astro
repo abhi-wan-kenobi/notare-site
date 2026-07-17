@@ -5,7 +5,7 @@ import Base from "../layouts/Base.astro";
 // (Apple Silicon .dmg attached to the GitHub release). Everything else —
 // the .dmg download row with the Gatekeeper note — is already wired below
 // and replaces the "build from source" row automatically.
-const MACOS_RELEASED = false;
+const MACOS_RELEASED = true;
 ---
 
 <Base
@@ -26,7 +26,7 @@ const MACOS_RELEASED = false;
       </p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#download">
-          Download for Windows · Linux
+          Download for Windows · macOS · Linux
         </a>
         <a class="btn" href="https://github.com/abhi-wan-kenobi/notare">View source on GitHub</a>
       </div>
