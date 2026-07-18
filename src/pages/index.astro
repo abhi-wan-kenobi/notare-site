@@ -20,9 +20,7 @@ const MACOS_RELEASED = true;
         Your meetings, transcribed and enhanced — <span class="accent">locally</span>.
       </h1>
       <p class="sub">
-        Saved as plain Markdown you own. Notare records your meetings without
-        bots, transcribes them on your GPU, and sharpens <em>your</em> notes
-        with the transcript as context. Open source. No cloud. No account.
+        A local-first meeting notetaker and dictation app that saves plain Markdown directly into your Obsidian vault. Powered by on-device engines (Whisper, Parakeet, Voxtral including Hindi support) with self-hosted GPU node transcription. Open source, MIT licensed, and completely tracker-free.
       </p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#download">
@@ -33,7 +31,7 @@ const MACOS_RELEASED = true;
       <p class="meta-line">
         <span><span class="dot-ok" aria-hidden="true"></span> MIT licensed</span>
         <span><span class="dot-ok" aria-hidden="true"></span> Zero telemetry — compiled out</span>
-        <span><span class="dot-ok" aria-hidden="true"></span> No accounts, ever</span>
+        <span><span class="dot-ok" aria-hidden="true"></span> Signed &amp; notarized on macOS</span>
       </p>
     </div>
   </section>
@@ -52,12 +50,9 @@ const MACOS_RELEASED = true;
       <div class="feature-list">
         <div class="feature-row">
           <div>
-            <h3><span class="idx">01</span> Local transcription, on your GPU</h3>
+            <h3><span class="idx">01</span> Live transcription & dictation</h3>
             <p>
-              Whisper runs on-device with GPU acceleration — Metal, CUDA, or
-              Vulkan. Every model is checksum-verified before it ever loads.
-              Your audio never crosses the network; there is no server to
-              trust because there is no server.
+              Capture every word in real-time or dictate notes using the elegant, themeable interaction orb. Notare transcribes with zero delay using optimized local Whisper models, transforming spoken dialogue into structured text as you speak.
             </p>
           </div>
           <div class="vignette" role="img" aria-label="Live transcript mock: recording indicator, timer, and streaming speaker lines">
@@ -120,13 +115,9 @@ Linked: <span class="link">[[Orders-V2-Migration]]</span></div>
 
         <div class="feature-row">
           <div>
-            <h3><span class="idx">04</span> Bring your own everything</h3>
+            <h3><span class="idx">04</span> On-device engines per platform</h3>
             <p>
-              Enhancement runs on the LLM you point it at — Ollama on your own
-              hardware, or any OpenAI-compatible endpoint with your own key.
-              Calendar sync uses <em>your</em> Google OAuth credentials,
-              straight from your machine to Google. No middleman, no metering,
-              no one in between.
+              Notare runs highly optimized speech models locally. Point to Whisper, Parakeet, or Voxtral (including high-accuracy Hindi models) tailored for your operating system's GPU framework. No telemetry, no API fees, and absolute privacy.
             </p>
           </div>
           <div class="vignette" role="img" aria-label="Settings mock: local Whisper model verified, Ollama endpoint connected, calendar via own OAuth">
@@ -136,6 +127,72 @@ Linked: <span class="link">[[Orders-V2-Migration]]</span></div>
               <dt>Calendar</dt><dd>Google · your OAuth client <span class="ok">✓</span></dd>
               <dt>Telemetry</dt><dd>not compiled in</dd>
             </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GPU Server Section ============ -->
+  <section class="band" id="gpu">
+    <div class="wrap">
+      <p class="kicker">Self-hosted power</p>
+      <h2 class="section-title">Your GPU box does the heavy lifting.</h2>
+      <p class="section-lede">
+        Notare v0.3 introduces a self-hosted transcription server. Run the heavy models on a separate LAN machine with a GPU so your laptop battery stays cool and your workspace remains silent.
+      </p>
+
+      <div class="feature-row" style="border-bottom: none; padding-top: 24px;">
+        <div>
+          <h3 style="font-size: 20px; font-weight: 640; margin-bottom: 12px; color: var(--text);">Blazing fast LAN transcription</h3>
+          <p style="color: var(--text-muted); font-size: 15.5px; line-height: 1.6; margin-bottom: 20px;">
+            Deploy Notare's pre-configured Docker images with support for <strong>CPU, Vulkan, and NVIDIA CUDA</strong>. Point Notare at your server's address — one URL, and every transcription runs on your own GPU.
+          </p>
+          <ul style="list-style: none; display: grid; gap: 10px; color: var(--text-muted); font-size: 14.5px; padding: 0;">
+            <li style="display: flex; gap: 10px; align-items: center;"><span class="dot-ok" style="background: var(--accent);"></span> <strong>Unified Docker build:</strong> Fast setup for any GPU-equipped Linux/Windows host.</li>
+            <li style="display: flex; gap: 10px; align-items: center;"><span class="dot-ok" style="background: var(--accent);"></span> <strong>Zero configuration:</strong> Point client to the server's IP address and transcribe.</li>
+            <li style="display: flex; gap: 10px; align-items: center;"><span class="dot-ok" style="background: var(--accent);"></span> <strong>Extremely efficient:</strong> Verified performance reaching 5.9x realtime speeds.</li>
+          </ul>
+        </div>
+
+        <div class="screenshot-frame">
+          <div class="screenshot-header">
+            <div class="screenshot-dots">
+              <span class="screenshot-dot close"></span>
+              <span class="screenshot-dot minimize"></span>
+              <span class="screenshot-dot maximize"></span>
+            </div>
+            <span class="screenshot-title">notare-stt-admin · rx-6600</span>
+          </div>
+          <img class="screenshot-img" src="/assets/stt-admin.png" alt="Notare GPU transcription server admin UI showing GPU verified and 5.9x realtime speed" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ screenshot placeholder ============ -->
+  <section class="band" id="preview">
+    <div class="wrap">
+      <p class="kicker">Visual tour</p>
+      <h2 class="section-title">See it in action.</h2>
+      <p class="section-lede">
+        Notare provides a clutter-free, responsive environment optimized for quick note-taking, transcript auditing, and distraction-free dictation.
+      </p>
+
+      <div style="margin-top: 40px;">
+        <div class="screenshot-frame">
+          <div class="screenshot-header">
+            <div class="screenshot-dots">
+              <span class="screenshot-dot close"></span>
+              <span class="screenshot-dot minimize"></span>
+              <span class="screenshot-dot maximize"></span>
+            </div>
+            <span class="screenshot-title">notare-desktop-app</span>
+          </div>
+          <div class="app-placeholder-content">
+            <div class="app-placeholder-icon" aria-hidden="true">🖼️</div>
+            <div class="app-placeholder-caption">App tour — screenshots landing with v0.3</div>
+            <div class="app-placeholder-sub">Responsive interface, local vault path selector, and live speech visualization mock.</div>
           </div>
         </div>
       </div>
@@ -179,12 +236,7 @@ Linked: <span class="link">[[Orders-V2-Migration]]</span></div>
             <span class="tag">.msi installer</span>
           </div>
           <p>
-            Standard MSI installer for Windows 10/11.
-            <br /><br />
-            Note: the installer isn't code-signed yet, so SmartScreen will show
-            an "unrecognized app" warning — click <em>More info → Run anyway</em>.
-            The build is reproducible from the MIT source if you'd rather verify
-            than trust.
+            Standard signed MSI installer for Windows 10/11. Simple, secure installation experience running warning-free. Every release package is cryptographically signed and verifiable against the open-source codebase.
             <span class="dl-actions">
               <a class="btn btn-primary" href="https://github.com/abhi-wan-kenobi/notare/releases/latest">Download .msi — latest release</a>
             </span>
@@ -212,15 +264,7 @@ Linked: <span class="link">[[Orders-V2-Migration]]</span></div>
                 <span class="tag">.dmg · Apple Silicon</span>
               </div>
               <p>
-                Disk image for Apple Silicon Macs (M1 and later), with
-                Metal-accelerated Whisper out of the box.
-                <br />
-                <br />
-                Note: the app isn't notarized yet, so Gatekeeper will refuse a
-                normal double-click the first time — <em>right-click the app →
-                Open → Open</em> once, and it launches normally after that. The
-                build is reproducible from the MIT source if you'd rather
-                verify than trust.
+                Fully notarized disk image for Apple Silicon Macs (M1 and later), with Metal-accelerated transcription. Signed and notarized to pass Apple Gatekeeper checks out of the box.
                 <span class="dl-actions">
                   <a class="btn btn-primary" href="https://github.com/abhi-wan-kenobi/notare/releases/latest">
                     Download .dmg — latest release

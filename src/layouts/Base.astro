@@ -8,7 +8,7 @@ interface Props {
 const { title, description } = Astro.props;
 const path = Astro.url.pathname;
 const canonical = new URL(path, Astro.site);
-const ogImage = new URL("/og.png", Astro.site);
+const ogImage = new URL("/assets/notare-logo.png", Astro.site);
 ---
 
 <!doctype html>
@@ -33,14 +33,14 @@ const ogImage = new URL("/og.png", Astro.site);
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/assets/notare-logo.png" />
     <title>{title}</title>
   </head>
   <body>
     <header class="site">
       <div class="wrap">
         <a class="brand" href="/">
-          <span class="brand-mark" aria-hidden="true"></span>
+          <img class="brand-logo" src="/assets/notare-logo.png" alt="Notare Logo" />
           Notare
         </a>
         <nav class="main" aria-label="Main">
@@ -60,14 +60,9 @@ const ogImage = new URL("/og.png", Astro.site);
 
     <footer class="site">
       <div class="wrap">
-        <span>© 2026 Notare · MIT licensed, source and all.</span>
+        <span>Notare — free & open source · MIT</span>
         <nav aria-label="Footer">
-          <a href="https://abhishek.be">Built by Abhishek Gupta</a>
           <a href="https://github.com/abhi-wan-kenobi/notare">GitHub</a>
-          {/* TODO: swap to the GitHub Projects board URL once it exists. */}
-          <a href="https://github.com/abhi-wan-kenobi/notare/issues">Roadmap</a>
-          <a href="https://github.com/abhi-wan-kenobi/notare/blob/main/LICENSE.md">MIT License</a>
-          <a href="/plus">Notare+</a>
         </nav>
       </div>
     </footer>

@@ -1,0 +1,4 @@
+- src/layouts/Base.astro: Updated favicon, brand logo, social image, and stripped personal links/credits from the footer.
+- src/styles/global.css: Redesigned dark-first color scheme, added glow animations, transitions, and screenshot window framing styles.
+- src/pages/index.astro: Redesigned layout with updated tone, new GPU Server and Visual Tour sections, and signed installer notes.
+- src/pages/plus.astro: Replaced active waitlist form and Javascript logic with a disabled "Waitlist opening soon" state.
