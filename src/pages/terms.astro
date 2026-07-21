@@ -1,0 +1,191 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+  title="Terms of Service — Notare"
+  description="The terms for using Notare — free, open source, provided as is."
+>
+  <section class="band">
+    <div class="wrap">
+      <p class="kicker">Legal</p>
+      <h1 class="section-title" style="max-width: none;">Terms of Service</h1>
+      <p class="section-lede">
+        Notare is a free, open-source app. These terms are short and
+        plain-English on purpose — there's nothing to sign up for and nothing to
+        pay for the core app.
+      </p>
+      <p class="updated">Last updated: 21 July 2026</p>
+
+      <div class="legal">
+        <h2>1. Acceptance</h2>
+        <p>
+          By downloading, installing, or using Notare, you agree to these terms.
+          If you don't agree, please don't use the app.
+        </p>
+
+        <h2>2. License &amp; cost</h2>
+        <p>
+          Notare is free and open source, released under the
+          <strong>MIT License</strong>. The full source code is available at
+          <a href="https://github.com/abhi-wan-kenobi/notare">github.com/abhi-wan-kenobi/notare</a>.
+          You may use, modify, distribute, and self-host Notare in accordance
+          with the terms of the MIT License.
+        </p>
+
+        <h2>3. "As is", no warranty</h2>
+        <p>
+          Notare is provided <strong>"as is"</strong>, without warranties of any
+          kind, express or implied — including, without limitation, the implied
+          warranties of merchantability, fitness for a particular purpose, and
+          non-infringement. This is consistent with the MIT License. You use
+          Notare at your own risk.
+        </p>
+
+        <h2>4. Notare+ and premium features</h2>
+        <p>
+          The core app is free. Some optional, clearly-marked premium or hosted
+          features may be offered separately (for example, a hosted
+          transcription or companion service). If you choose to use any such
+          paid feature, it is subject to any additional terms presented to you
+          at the point of purchase. You are never required to use a paid feature
+          to use Notare.
+        </p>
+
+        <h2>5. Your responsibilities</h2>
+        <p>
+          You are responsible for how you use Notare and for complying with all
+          applicable laws. In particular,
+          <strong>
+            recording and transcribing conversations is subject to consent and
+            recording laws that vary by jurisdiction
+          </strong>
+          — you are responsible for obtaining any consent required from meeting
+          participants before recording.
+        </p>
+
+        <h2>6. Third-party services</h2>
+        <p>
+          Notare can connect to third-party services that you choose to
+          configure — for example, Google Calendar, external LLM providers, or a
+          self-hosted transcription server. Your use of those services is
+          governed by their own terms and privacy policies. Notare is not
+          responsible for third-party services or for how they handle your data.
+        </p>
+
+        <h2>7. Limitation of liability</h2>
+        <p>
+          To the maximum extent permitted by law, the authors and contributors
+          of Notare are not liable for any indirect, incidental, special, or
+          consequential damages, or for any loss of data, arising from your use
+          of — or inability to use — Notare.
+        </p>
+
+        <h2>8. Privacy</h2>
+        <p>
+          Your use of Notare is also governed by our
+          <a href="/privacy">Privacy Policy</a>.
+        </p>
+
+        <h2>9. Changes to these terms</h2>
+        <p>
+          These terms may be updated from time to time. The "Last updated" date
+          above reflects the current version. Continued use of Notare after
+          changes take effect constitutes acceptance of the revised terms.
+        </p>
+
+        <h2>10. Governing law</h2>
+        <p>
+          These terms are governed by the laws of India, without regard to
+          conflict-of-laws rules.
+        </p>
+
+        <h2>11. Contact</h2>
+        <p>
+          Questions about these terms? Reach out via the project's GitHub
+          repository:
+          <a href="https://github.com/abhi-wan-kenobi/notare">github.com/abhi-wan-kenobi/notare</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .updated {
+    margin-top: 16px;
+    font-size: 13.5px;
+    color: var(--text-muted);
+    font-family: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas,
+      monospace;
+  }
+
+  .legal {
+    margin-top: 40px;
+    max-width: 70ch;
+    color: var(--text-muted);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .legal h2 {
+    color: var(--text);
+    font-size: 20px;
+    font-weight: 640;
+    letter-spacing: -0.015em;
+    line-height: 1.3;
+    margin-top: 40px;
+    margin-bottom: 12px;
+  }
+
+  .legal h2:first-child {
+    margin-top: 0;
+  }
+
+  .legal h3 {
+    color: var(--text);
+    font-size: 16.5px;
+    font-weight: 620;
+    margin-top: 26px;
+    margin-bottom: 10px;
+  }
+
+  .legal p {
+    margin-bottom: 16px;
+  }
+
+  .legal p:last-child {
+    margin-bottom: 0;
+  }
+
+  .legal strong {
+    color: var(--text);
+    font-weight: 620;
+  }
+
+  .legal ul {
+    margin: 0 0 16px;
+    padding-left: 22px;
+    display: grid;
+    gap: 8px;
+  }
+
+  .legal li {
+    padding-left: 4px;
+  }
+
+  .legal li::marker {
+    color: var(--accent);
+  }
+
+  .legal a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(77, 92, 255, 0.4);
+  }
+
+  .legal a:hover {
+    text-decoration-color: var(--accent);
+  }
+</style>
