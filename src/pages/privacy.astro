@@ -9,54 +9,45 @@ import Base from "../layouts/Base.astro";
   <section class="band">
     <div class="wrap">
       <p class="kicker">Legal</p>
-      <h2 class="section-title">Privacy Policy</h2>
+      <h1 class="section-title">Privacy Policy</h1>
       <p class="section-lede">
-        Notare is <span class="accent">local-first</span>. Your notes, your
-        audio, and your accounts stay on your device — we run no servers that
-        receive them.
+        Notare stores your meeting data locally. Connections you enable can
+        send data to your chosen speech, AI, calendar, email, or paired devices.
       </p>
 
       <div class="prose">
-        <p class="updated">Last updated: 21 July 2026</p>
+        <p class="updated">Last updated: 14 November 2026</p>
 
         <h2 id="overview">1. Overview</h2>
         <p>
           Notare is a free, open-source (MIT-licensed), local-first meeting
-          notetaker and dictation app. This policy covers both the Notare
-          desktop app and the notare.dev website. Its core principle is simple:
-          <strong>your data stays on your device.</strong> Notare has no servers
-          that receive your notes, your audio, or your account — there is
-          nothing for us to collect, because your content never comes to us.
+          notetaker and dictation app. This policy covers the desktop app and
+          notare.dev. You do not need a Notare account. You choose whether to
+          connect external services; those services have their own privacy policies.
         </p>
 
         <h2 id="no-accounts">2. No accounts, no telemetry</h2>
         <p>
-          Notare requires no sign-up and no account to use. The app ships with
-          analytics and telemetry compiled out — it does not track your usage,
-          measure your behaviour, or phone home. There is no usage identity of
-          any kind.
+          Notare requires no Notare sign-up. The app ships with analytics and
+          telemetry compiled out. This does not mean the app makes no network
+          requests: updates, model downloads, and connected services need network access.
         </p>
 
         <h2 id="local-storage">3. Your content is stored locally</h2>
         <p>
-          Your meeting notes are saved as plain Markdown files, and your audio
-          recordings as ordinary files, inside a folder (a "vault") that you
-          choose on your own device. These files are
-          <strong>never uploaded to Notare.</strong> You control them, you back
-          them up, and you delete them — exactly as you would any other file on
-          your computer.
+          Notare stores its database, app settings, and recordings on your
+          computer. You can save notes as Markdown in a folder you choose.
+          You control these files and their backups. Optional device sync
+          shares supported meeting data with the devices you pair.
         </p>
 
         <h2 id="transcription">4. Transcription</h2>
         <p>
-          By default, speech-to-text runs entirely on-device using local models
-          (Whisper, Parakeet, or Voxtral). Audio does not leave your machine.
-        </p>
-        <p>
-          Optionally, you may connect a self-hosted companion transcription
-          server that you run on your own hardware. If you do, audio is sent
-          only to the server address you configure — not to Notare. You choose
-          whether to use it, and where it runs.
+          You can download a speech model and transcribe on your device.
+          If you configure a remote speech provider or a self-hosted companion
+          server, Notare sends audio to that endpoint for transcription.
+          Review that service's privacy policy and your server configuration
+          before sending recordings.
         </p>
 
         <h2 id="google-calendar">5. Google Calendar (optional connection)</h2>
@@ -70,11 +61,12 @@ import Base from "../layouts/Base.astro";
             machine (<code>127.0.0.1</code>).
           </li>
           <li>
-            It requests <strong>read-only</strong> access to your calendar
-            (<code>calendar.readonly</code>,
+            The initial connection requests <strong>read-only</strong> calendar
+            access (<code>calendar.readonly</code> and
             <code>calendar.events.readonly</code>) plus your email address
-            (<code>userinfo.email</code>) solely to identify which account is
-            connected.
+            (<code>userinfo.email</code>) to identify the connected account.
+            If you create a calendar event, Notare requests the additional
+            <code>calendar.events</code> write permission.
           </li>
           <li>
             The resulting OAuth tokens are stored
@@ -82,17 +74,27 @@ import Base from "../layouts/Base.astro";
             store</strong>, on your device.
           </li>
           <li>
-            Calendar data is used only to display your upcoming meetings inside
-            the app, so you can attach notes to them.
+            Calendar data supports upcoming-meeting views, attached notes,
+            and meeting preparation.
           </li>
         </ul>
         <p>
-          <strong>
-            Notare's website and any Notare-operated servers never receive your
-            Google account data, tokens, or calendar contents.
-          </strong>
-          The OAuth exchange happens directly between your device and Google.
-          You can disconnect at any time, which removes the stored tokens.
+          The OAuth exchange happens between your device and Google, not
+          through the Notare website. You can disconnect a Google account
+          in Settings to remove its stored credentials.
+        </p>
+        <p>
+          <strong>Gmail is a separate, optional connection.</strong>
+          It requests <code>gmail.compose</code> to create follow-up drafts
+          in your Gmail account. That permission includes composing and sending
+          mail; Notare's follow-up workflow creates a draft for you to review
+          and send yourself. Draft generation uses your configured AI backend.
+        </p>
+        <p>
+          Outlook is also optional. Initial access uses
+          <code>offline_access</code>, <code>User.Read</code>, and
+          <code>Calendars.Read</code>. Creating an event requests
+          <code>Calendars.ReadWrite</code>. Your device communicates with Microsoft.
         </p>
         <p class="disclosure">
           Notare's use and transfer of information received from Google APIs to
@@ -105,30 +107,46 @@ import Base from "../layouts/Base.astro";
 
         <h2 id="ai-enhancement">6. Optional AI enhancement</h2>
         <p>
-          If you choose to enable note enhancement with an external LLM provider
-          you configure — for example a local Ollama or LM Studio server, or a
-          third-party API — the note text you choose to enhance is sent to that
-          provider, and is governed by that provider's own privacy policy. By
-          default, enhancement runs locally; nothing is sent anywhere unless you
-          configure a provider and invoke it yourself.
+          AI enhancement, briefs, draft generation, and chat use the backend
+          you configure. A remote backend receives the notes, transcripts,
+          questions, and other context needed for the requested feature.
+          Local backends such as Ollama can keep that processing on your
+          computer. The provider's policies govern any data you send to it.
+        </p>
+        <h3>Optional device sync (preview)</h3>
+        <p>
+          Sync is off by default. If you enable it and pair devices, Notare
+          sends supported notes and meeting data to those peers. The iroh
+          transport uses public discovery and relay services operated by
+          Number 0 (n0.computer); relayed sync content is end-to-end encrypted.
+          You can stop sync or remove paired devices in Settings.
+        </p>
+        <h3>Optional MCP access</h3>
+        <p>
+          If you enable the MCP server and connect an agent client, that
+          client can use the meeting tools you expose. The client's own AI
+          backend may receive the returned data. Review its configuration.
         </p>
 
         <h2 id="website">7. The notare.dev website</h2>
         <p>
-          notare.dev is a static marketing site. It does not run user-behaviour
-          analytics on app users. Like most websites, it is served through a CDN
-          (Cloudflare), which may keep standard, short-lived request logs (such
-          as IP address and timestamp) for security and reliability. These logs
-          are not linked to any app identity — the app has no identity to link
-          them to.
+          Cloudflare serves this static website and may process request
+          information such as your IP address and requested URL for delivery,
+          security, and reliability. Cloudflare also injects its Web Analytics
+          script into the live website for page-view and performance
+          measurements. This is separate from the desktop app, which has no telemetry.
+          See <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare's privacy policy</a>.
+          Product screenshots use fictional demo data. Download and source
+          links take you to GitHub, which has its own privacy policy.
         </p>
 
         <h2 id="retention">8. Data retention &amp; deletion</h2>
         <p>
-          Because your notes and recordings are local files, you retain and
-          delete them yourself, at any time. The app also offers audio-retention
-          settings so recordings can be cleaned up automatically. Disconnecting
-          Google removes the stored OAuth tokens from your device.
+          You manage your local files and backups. The app also offers
+          audio-retention settings. Removing a local copy does not delete
+          copies you exported, sent to an external service, or backed up.
+          Disconnecting a calendar or email account removes its stored
+          credentials from this device.
         </p>
 
         <h2 id="children">9. Children</h2>
@@ -216,7 +234,7 @@ import Base from "../layouts/Base.astro";
     color: var(--accent);
     text-decoration: underline;
     text-underline-offset: 3px;
-    text-decoration-color: rgba(77, 92, 255, 0.4);
+    text-decoration-color: var(--accent);
   }
   .prose a:hover {
     text-decoration-color: var(--accent);
